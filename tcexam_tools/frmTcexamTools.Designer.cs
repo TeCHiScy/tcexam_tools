@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lstDatabase = new System.Windows.Forms.ListView();
             this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,6 +50,8 @@
             this.lblModule = new System.Windows.Forms.Label();
             this.lblSubject = new System.Windows.Forms.Label();
             this.txtSubject = new System.Windows.Forms.TextBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstDatabase
@@ -62,7 +65,7 @@
             this.lstDatabase.Location = new System.Drawing.Point(12, 39);
             this.lstDatabase.MultiSelect = false;
             this.lstDatabase.Name = "lstDatabase";
-            this.lstDatabase.Size = new System.Drawing.Size(684, 194);
+            this.lstDatabase.Size = new System.Drawing.Size(684, 511);
             this.lstDatabase.TabIndex = 2;
             this.lstDatabase.UseCompatibleStateImageBehavior = false;
             this.lstDatabase.View = System.Windows.Forms.View.Details;
@@ -85,7 +88,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(622, 543);
+            this.btnRemove.Location = new System.Drawing.Point(622, 860);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 4;
@@ -95,7 +98,7 @@
             // 
             // btnInsert
             // 
-            this.btnInsert.Location = new System.Drawing.Point(541, 543);
+            this.btnInsert.Location = new System.Drawing.Point(541, 860);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(75, 23);
             this.btnInsert.TabIndex = 3;
@@ -106,7 +109,7 @@
             // txtDescription
             // 
             this.txtDescription.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDescription.Location = new System.Drawing.Point(12, 271);
+            this.txtDescription.Location = new System.Drawing.Point(12, 588);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(684, 70);
@@ -116,7 +119,7 @@
             // 
             this.radioChoice.AutoSize = true;
             this.radioChoice.Checked = true;
-            this.radioChoice.Location = new System.Drawing.Point(81, 349);
+            this.radioChoice.Location = new System.Drawing.Point(81, 666);
             this.radioChoice.Name = "radioChoice";
             this.radioChoice.Size = new System.Drawing.Size(59, 16);
             this.radioChoice.TabIndex = 5;
@@ -128,7 +131,7 @@
             // radioTrueFalse
             // 
             this.radioTrueFalse.AutoSize = true;
-            this.radioTrueFalse.Location = new System.Drawing.Point(146, 349);
+            this.radioTrueFalse.Location = new System.Drawing.Point(146, 666);
             this.radioTrueFalse.Name = "radioTrueFalse";
             this.radioTrueFalse.Size = new System.Drawing.Size(59, 16);
             this.radioTrueFalse.TabIndex = 6;
@@ -139,7 +142,7 @@
             // radioText
             // 
             this.radioText.AutoSize = true;
-            this.radioText.Location = new System.Drawing.Point(211, 349);
+            this.radioText.Location = new System.Drawing.Point(211, 666);
             this.radioText.Name = "radioText";
             this.radioText.Size = new System.Drawing.Size(59, 16);
             this.radioText.TabIndex = 7;
@@ -150,7 +153,7 @@
             // lblType
             // 
             this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(10, 351);
+            this.lblType.Location = new System.Drawing.Point(10, 668);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(53, 12);
             this.lblType.TabIndex = 9;
@@ -159,7 +162,7 @@
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(10, 247);
+            this.lblDescription.Location = new System.Drawing.Point(10, 564);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(53, 12);
             this.lblDescription.TabIndex = 11;
@@ -168,7 +171,7 @@
             // txtAnswers
             // 
             this.txtAnswers.Font = new System.Drawing.Font("宋体", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtAnswers.Location = new System.Drawing.Point(12, 402);
+            this.txtAnswers.Location = new System.Drawing.Point(12, 719);
             this.txtAnswers.Multiline = true;
             this.txtAnswers.Name = "txtAnswers";
             this.txtAnswers.Size = new System.Drawing.Size(683, 131);
@@ -177,7 +180,7 @@
             // lblAnswers
             // 
             this.lblAnswers.AutoSize = true;
-            this.lblAnswers.Location = new System.Drawing.Point(10, 378);
+            this.lblAnswers.Location = new System.Drawing.Point(10, 695);
             this.lblAnswers.Name = "lblAnswers";
             this.lblAnswers.Size = new System.Drawing.Size(53, 12);
             this.lblAnswers.TabIndex = 13;
@@ -185,7 +188,7 @@
             // 
             // btnWrite
             // 
-            this.btnWrite.Location = new System.Drawing.Point(94, 543);
+            this.btnWrite.Location = new System.Drawing.Point(94, 860);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(75, 23);
             this.btnWrite.TabIndex = 14;
@@ -195,7 +198,7 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(13, 543);
+            this.btnRead.Location = new System.Drawing.Point(13, 860);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(75, 23);
             this.btnRead.TabIndex = 15;
@@ -244,11 +247,27 @@
             this.txtSubject.Size = new System.Drawing.Size(133, 21);
             this.txtSubject.TabIndex = 20;
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(460, 860);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 21;
+            this.btnClear.Text = "清空";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmTcexamTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 578);
+            this.ClientSize = new System.Drawing.Size(709, 892);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtAnswers);
             this.Controls.Add(this.txtSubject);
             this.Controls.Add(this.lblSubject);
@@ -297,6 +316,8 @@
         private System.Windows.Forms.ColumnHeader type;
         private System.Windows.Forms.ColumnHeader description;
         private System.Windows.Forms.ColumnHeader answers;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

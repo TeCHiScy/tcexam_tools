@@ -145,37 +145,75 @@ namespace WindowsFormsApp1
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            Question item = new Question();
-            item.answers = new List<string>();
-            item.answer_values = new List<bool>();
-            item.description = txtDescription.Text;
-            if (radioChoice.Checked) item.type = QuestionType.Choice;
-            if (radioTrueFalse.Checked) item.type = QuestionType.Choice;
-            if (radioText.Checked) item.type = QuestionType.Text;
-
-            foreach(var line in txtAnswers.Lines)
+            if (lstDatabase.SelectedIndices.Count == 0)
             {
-                string temp = line.Trim();
-                if (temp.Length == 0) continue;
-                bool is_right = false;
-                if (temp.Length >= 2 && temp.Substring(0, 2) == "**")
+                Question item = new Question();
+                item.answers = new List<string>();
+                item.answer_values = new List<bool>();
+                item.description = txtDescription.Text;
+                if (radioChoice.Checked) item.type = QuestionType.Choice;
+                if (radioTrueFalse.Checked) item.type = QuestionType.Choice;
+                if (radioText.Checked) item.type = QuestionType.Text;
+
+                foreach (var line in txtAnswers.Lines)
                 {
-                    temp = temp.Substring(2).Trim();
-                    is_right = true;
+                    string temp = line.Trim();
+                    if (temp.Length == 0) continue;
+                    bool is_right = false;
+                    if (temp.Length >= 2 && temp.Substring(0, 2) == "**")
+                    {
+                        temp = temp.Substring(2).Trim();
+                        is_right = true;
+                    }
+                    else
+                    if (temp.Length >= 1 && temp.Substring(0, 1) == "*")
+                    {
+                        temp = temp.Substring(1).Trim();
+                        is_right = false;
+                    }
+                    item.answers.Add(temp);
+                    item.answer_values.Add(is_right);
                 }
-                else
-                if (temp.Length >= 1 && temp.Substring(0, 1) == "*")
-                {
-                    temp = temp.Substring(1).Trim();
-                    is_right = false;
-                }
-                item.answers.Add(temp);
-                item.answer_values.Add(is_right);
+                database.Add(item);
+                RefreshDatabase();
+                lstDatabase.Items[lstDatabase.Items.Count - 1].EnsureVisible();
+                lstDatabase.Items[lstDatabase.Items.Count - 1].Selected = true;
+                lstDatabase.Focus();
             }
-            database.Add(item);
-            RefreshDatabase();
-            txtDescription.Text = "";
-            txtAnswers.Text = "";
+            else
+            {
+                int i = lstDatabase.SelectedIndices[0];
+                database[i].answers = new List<string>();
+                database[i].answer_values = new List<bool>();
+                database[i].description = txtDescription.Text;
+                if (radioChoice.Checked) database[i].type = QuestionType.Choice;
+                if (radioTrueFalse.Checked) database[i].type = QuestionType.Choice;
+                if (radioText.Checked) database[i].type = QuestionType.Text;
+
+                foreach (var line in txtAnswers.Lines)
+                {
+                    string temp = line.Trim();
+                    if (temp.Length == 0) continue;
+                    bool is_right = false;
+                    if (temp.Length >= 2 && temp.Substring(0, 2) == "**")
+                    {
+                        temp = temp.Substring(2).Trim();
+                        is_right = true;
+                    }
+                    else
+                    if (temp.Length >= 1 && temp.Substring(0, 1) == "*")
+                    {
+                        temp = temp.Substring(1).Trim();
+                        is_right = false;
+                    }
+                    database[i].answers.Add(temp);
+                    database[i].answer_values.Add(is_right);
+                }
+                RefreshDatabase();
+                lstDatabase.Items[i].EnsureVisible();
+                lstDatabase.Items[i].Selected = true;
+                lstDatabase.Focus();
+            }
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
@@ -214,6 +252,20 @@ namespace WindowsFormsApp1
                 sw.Close();
                 MessageBox.Show("题库写入完成。");
             }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (lstDatabase.SelectedIndices.Count > 0) btnInsert.Text = "修改";
+            else btnInsert.Text = "添加";
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            lstDatabase.SelectedIndices.Clear();
+            txtDescription.Text = "";
+            radioChoice.Checked = true;
+            radioChoice_CheckedChanged(null, null);
         }
     }
 }
