@@ -6,11 +6,11 @@ c:\users\46810\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFor
 c:\users\46810\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 c:\users\46810\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 c:\users\46810\documents\visual studio 2017\Projects\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\tcexam_tools.csprojResolveAssemblyReference.cache
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\bin\Debug\WindowsFormsApp1.exe
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\bin\Debug\WindowsFormsApp1.pdb
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.csprojResolveAssemblyReference.cache
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\WindowsFormsApp1.frmTcexamTools.resources
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\bin\Debug\tcexam_tools.exe
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\bin\Debug\tcexam_tools.pdb
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.frmTcexamTools.resources
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.Properties.Resources.resources
 C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.csproj.GenerateResource.Cache
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\WindowsFormsApp1.exe
-C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.exe
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.pdb
+C:\Users\46810\Desktop\tcexam_tools\tcexam_tools\obj\Debug\tcexam_tools.csprojResolveAssemblyReference.cache

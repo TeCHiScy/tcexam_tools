@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
 
-namespace WindowsFormsApp1
+namespace tcexam_tools
 {
     public partial class frmTcexamTools : Form
     {
@@ -28,6 +28,10 @@ namespace WindowsFormsApp1
             InitializeComponent();
             radioChoice.Checked = true;
             radioChoice_CheckedChanged(null, null);
+            lstDatabase.Columns[0].Width = 30;
+            lstDatabase.Columns[1].Width = 40;
+            lstDatabase.Columns[2].Width = 250;
+            lstDatabase.Columns[3].Width = 350;
         }
 
         private void RefreshDatabase()
@@ -35,8 +39,15 @@ namespace WindowsFormsApp1
             lstDatabase.Items.Clear();
             for (int i = 0; i < database.Count; i++)
             {
-                if (database[i].type == QuestionType.Choice) lstDatabase.Items.Add("选择题");
-                if (database[i].type == QuestionType.Text) lstDatabase.Items.Add("填空题");
+                lstDatabase.Items.Add((i + 1).ToString());
+                int value_count = 0;
+                for (int k = 0; k < database[i].answer_values.Count; k++)
+                {
+                    if (database[i].answer_values[k]) value_count++;
+                }
+                if (database[i].type == QuestionType.Choice && value_count == 1) lstDatabase.Items[i].SubItems.Add("S");
+                if (database[i].type == QuestionType.Choice && value_count > 1) lstDatabase.Items[i].SubItems.Add("M");
+                if (database[i].type == QuestionType.Text) lstDatabase.Items[i].SubItems.Add("T");
                 lstDatabase.Items[i].SubItems.Add(database[i].description);
                 string line = "";
                 for (int k = 0; k < database[i].answers.Count; k++)
@@ -238,7 +249,7 @@ namespace WindowsFormsApp1
                     if (database[i].type == QuestionType.Choice && value_count == 1) line += "S";
                     if (database[i].type == QuestionType.Choice && value_count > 1) line += "M";
                     if (database[i].type == QuestionType.Text) line += "T";
-                    line += "\t1\t\t0\t1\t0\t1";
+                    line += "\t1\t\t0\t0\t0\t1";
                     sw.WriteLine(line);
                     for (int k = 0; k < database[i].answers.Count; k++)
                     {
@@ -262,10 +273,19 @@ namespace WindowsFormsApp1
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            lstDatabase.SelectedIndices.Clear();
             txtDescription.Text = "";
             radioChoice.Checked = true;
             radioChoice_CheckedChanged(null, null);
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            lstDatabase.SelectedIndices.Clear();
+        }
+
+        private void frmTcexamTools_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

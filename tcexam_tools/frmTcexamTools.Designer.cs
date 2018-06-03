@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace tcexam_tools
 {
     partial class frmTcexamTools
     {
@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.lstDatabase = new System.Windows.Forms.ListView();
+            this.index = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.answers = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,11 +53,13 @@
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnClearAll = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstDatabase
             // 
             this.lstDatabase.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.index,
             this.type,
             this.description,
             this.answers});
@@ -71,6 +74,11 @@
             this.lstDatabase.View = System.Windows.Forms.View.Details;
             this.lstDatabase.SelectedIndexChanged += new System.EventHandler(this.lstDatabase_SelectedIndexChanged);
             // 
+            // index
+            // 
+            this.index.Text = "#";
+            this.index.Width = 31;
+            // 
             // type
             // 
             this.type.Text = "类型";
@@ -79,12 +87,12 @@
             // description
             // 
             this.description.Text = "题目";
-            this.description.Width = 127;
+            this.description.Width = 121;
             // 
             // answers
             // 
             this.answers.Text = "选项列表";
-            this.answers.Width = 478;
+            this.answers.Width = 430;
             // 
             // btnRemove
             // 
@@ -217,15 +225,15 @@
             // 
             // txtModule
             // 
-            this.txtModule.Location = new System.Drawing.Point(390, 12);
+            this.txtModule.Location = new System.Drawing.Point(256, 12);
             this.txtModule.Name = "txtModule";
-            this.txtModule.Size = new System.Drawing.Size(133, 21);
+            this.txtModule.Size = new System.Drawing.Size(200, 21);
             this.txtModule.TabIndex = 17;
             // 
             // lblModule
             // 
             this.lblModule.AutoSize = true;
-            this.lblModule.Location = new System.Drawing.Point(355, 16);
+            this.lblModule.Location = new System.Drawing.Point(221, 16);
             this.lblModule.Name = "lblModule";
             this.lblModule.Size = new System.Drawing.Size(29, 12);
             this.lblModule.TabIndex = 18;
@@ -234,7 +242,7 @@
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(529, 16);
+            this.lblSubject.Location = new System.Drawing.Point(462, 16);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(29, 12);
             this.lblSubject.TabIndex = 19;
@@ -242,9 +250,9 @@
             // 
             // txtSubject
             // 
-            this.txtSubject.Location = new System.Drawing.Point(564, 12);
+            this.txtSubject.Location = new System.Drawing.Point(497, 12);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(133, 21);
+            this.txtSubject.Size = new System.Drawing.Size(200, 21);
             this.txtSubject.TabIndex = 20;
             // 
             // timer
@@ -258,15 +266,26 @@
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 21;
-            this.btnClear.Text = "清空";
+            this.btnClear.Text = "清空文本";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(379, 860);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(75, 23);
+            this.btnClearAll.TabIndex = 22;
+            this.btnClearAll.Text = "清空选择";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
             // frmTcexamTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(709, 892);
+            this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtAnswers);
             this.Controls.Add(this.txtSubject);
@@ -287,8 +306,11 @@
             this.Controls.Add(this.radioChoice);
             this.Controls.Add(this.txtDescription);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTcexamTools";
             this.Text = "txexam Tools";
+            this.Load += new System.EventHandler(this.frmTcexamTools_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -318,6 +340,8 @@
         private System.Windows.Forms.ColumnHeader answers;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ColumnHeader index;
+        private System.Windows.Forms.Button btnClearAll;
     }
 }
 
